@@ -7,24 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="icon.png" sizes="170x170"/>
-    
-  <link rel=stylesheet href="codemirror/doc/docs.css">
-
-  <link rel="stylesheet" href="codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
-  <script src="codemirror/lib/codemirror.js"></script>
-  <script src="codemirror/addon/hint/show-hint.js"></script>
-  <script src="codemirror/addon/hint/xml-hint.js"></script>
-  <script src="codemirror/addon/hint/html-hint.js"></script>
-  <script src="codemirror/mode/xml/xml.js"></script>
-  <script src="codemirror/mode/javascript/javascript.js"></script>
-  <script src="codemirror/mode/css/css.js"></script>
-  <script src="codemirror/mode/htmlmixed/htmlmixed.js"></script>
-  <style>
-    .CodeMirror {border-top: 1px solid #888; border-bottom: 1px solid #888;}
-  </style>
-    
-    
   </head>
   <body>
 
@@ -61,41 +43,7 @@
     <form class="file-process-framework ui form">
 
       <div class="ui two column doubling grid">
-        <div class="column">
-          <div class="ui segment">
-
-
-            <h1 class="ui horizontal divider header">
-              Configuration
-            </h1>
-
-            <!-- --------------------------------- -->
-
-            <div class="field">
-              <label for="bookmarklet_name">Bookmarklet name:
-              </label>
-            </div>
-            <div class="field">
-              <input name="bookmarklet_name" id="bookmarklet_name" type="text" value="Load jQuery" />
-            </div>
-
-            <div class="field">
-              <label for="code">Bookmarklet JavaScript:
-              </label>
-            </div>
-            <div class="field">
-              <textarea name="bookmarklet_javascript" id="code">var s=document.createElement('script');
-s.setAttribute('src','http://code.jquery.com/jquery.js');
-document.getElementsByTagName('body')[0].appendChild(s);</textarea>
-            </div>
-
-          </div> <!-- <div class="field"> -->
-
-          <!-- --------------------------- -->
-
-        </div> <!-- <div class="column"> -->
-        <!-- -------------------------------------- -->
-
+        
         <div class="column">
           <div class="ui segment display-result" style="">
             <!-- <div class="display-result"> -->
@@ -107,17 +55,64 @@ document.getElementsByTagName('body')[0].appendChild(s);</textarea>
 
             <div class="ui doubling grid">
               <div class="sixteen wide column">
-                <button type="button" class="fluid ui large right labeled icon green button download-file">
+                <a href="" id="bookmarklet_button"  class="fluid ui large right labeled icon green button download-file">
                   <i class="right bookmark icon"></i>
-                  Bookmarklet Button
-                </button>
+                  <span>Bookmarklet Button</span>
+                </a>
               </div>
             </div>
+            <!--
             <div class="ui segment">
               [擺放簡單操作的gif圖]
             </div>
+            -->
 
           </div> <!-- <div class="column"> -->
+        
+        
+        <div class="column">
+          <div class="ui segment">
+
+
+            <h1 class="ui horizontal divider header">
+              Configuration
+            </h1>
+
+            <!-- --------------------------------- -->
+
+            <div class="field">
+              <label for="bookmarklet_name">Bookmarklet name
+              </label>
+            </div>
+            <div class="field">
+              <input name="bookmarklet_name" id="bookmarklet_name" type="text" value="Load jQuery" />
+            </div>
+
+            <div class="field">
+              <label for="bookmarklet_javascript">Bookmarklet JavaScript
+              </label>
+            </div>
+            <div class="field">
+              <textarea name="bookmarklet_javascript" id="bookmarklet_javascript">var s=document.createElement('script');
+s.setAttribute('src','//code.jquery.com/jquery.js');
+document.getElementsByTagName('body')[0].appendChild(s);</textarea>
+            </div>
+            
+            <div class="field">
+              <label>Templates
+              </label>
+            </div>
+            <div class="field">
+              <button class="ui button template-load-javascript">Load a JavaScript file</button>
+            </div>
+            
+          </div> <!-- <div class="ui segment"> -->
+
+          <!-- --------------------------- -->
+
+        </div> <!-- <div class="column"> -->
+        <!-- -------------------------------------- -->
+
         </div> <!-- <div class="ui two column doubling grid"> -->
     </form>
 
@@ -125,14 +120,5 @@ document.getElementsByTagName('body')[0].appendChild(s);</textarea>
     <div id="preloader"></div>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
-  <script>
-      window.onload = function() {
-        editor = CodeMirror(document.getElementById("code"), {
-          mode: "text/html",
-          extraKeys: {"Ctrl-Space": "autocomplete"},
-          value: document.documentElement.innerHTML
-        });
-      };
-    </script>
   </body>
 </html>
