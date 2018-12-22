@@ -41,6 +41,35 @@ template_load_javascript = function () {
   return false;
 }
 
+copy_bookmarklet_source_code = function () {
+  var _panel = $(".file-process-framework");
+  var _name = _panel.find('#bookmarklet_name').val();
+  var _script = _panel.find('#bookmarklet_javascript').val();
+  _script = parsing_script(_script);
+  
+  var _code = $('<div><a></a></div>')
+  _code.find('a').attr('href', _script).text(_name)
+  _code = _code.html();
+  
+  if ($('#copy_temp_input').length === 0) {
+    $('<input type="text" id="copy_temp_input" />').appendTo('body')
+  }
+  
+  /* Get the text field */
+  var copyText = $('#copy_temp_input');
+  copyText.val(_code)
+  copyText.show()
+
+  /* Select the text field */
+  copyText.select();
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+  copyText.hide()
+  /* Alert the copied text */
+  alert("Copied");
+}
+
 // -----------------------
 
 $(function () {
@@ -49,4 +78,5 @@ $(function () {
     update_button();
     
     _panel.find(".template-load-javascript").click(template_load_javascript)
+    _panel.find("#copy_bookmarklet_source_code").click(copy_bookmarklet_source_code)
 });
