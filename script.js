@@ -118,10 +118,23 @@ function removeComments(str) {
     return str.join('').slice(2, -2);
 }
 
+template_load_javascript = function () {
+  var _url = window.prompt("JavaScript URL")
+  var _script = "var s=document.createElement('script');\n"
+    + "s.setAttribute('src','" + _url + "');\n"
+    + "document.getElementsByTagName('body')[0].appendChild(s)";
+    
+  var _panel = $(".file-process-framework");
+  _panel.find('#bookmarklet_javascript').val(_script);
+  return false;
+}
+
 // -----------------------
 
 $(function () {
     var _panel = $(".file-process-framework");
     _panel.find('input, textarea').change(update_button)
     update_button();
+    
+    _panel.find(".template-load-javascript").click(template_load_javascript)
 });
