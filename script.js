@@ -11,6 +11,14 @@ var update_button = function () {
 }
 
 var parsing_script = function (_script) {
+  
+  _script = _script.trim()
+  
+  if (_script.split('\n').length === 1
+          && (_script.startsWith("//") || _script.startsWith("http://") || _script.startsWith("https://"))) {
+    return _script
+  }
+  
   /*
   // 刪除每一行的註解
   var _output = []
